@@ -439,6 +439,8 @@ typedef struct sc_card {
 
 	struct sc_card_driver *driver;
 	struct sc_card_operations *ops;
+	struct sc_card_sm_context *sm_context;
+
 	const char *name;
 	void *drv_data;
 	int max_pin_len;
@@ -578,6 +580,18 @@ typedef struct sc_card_driver {
 	void *dll;
 } sc_card_driver_t;
 
+typedef struct sc_card_sm_driver {
+	int (*initialize)(struct sc_card *card,int flags);
+	int (*wrap_apdu)(struct sc_card *card, struct sc_apdu *apdu);
+	int (*finalize)(struct sc_card *card);
+	void *sm_data;
+} sc_card_sm_driver_t;
+
+typedef struct sc_card_sm_context {
+	unsigned int type;
+	sc_card_sm_driver_t *sm_driver;
+} sc_card_sm_context_t;
+
 /**
  * @struct sc_thread_context_t
  * Structure for the locking function to use when using libopensc
@@ -629,6 +643,9 @@ typedef struct sc_context {
  *  @return SC_SUCCESS on succcess and an error code otherwise
  */
 int sc_transmit_apdu(sc_card_t *card, sc_apdu_t *apdu);
+
+/* same as above, but no checks nor apdu chaining is done */
+int do_single_transmit(sc_card_t *card, sc_apdu_t *apdu);
 
 void sc_format_apdu(sc_card_t *card, sc_apdu_t *apdu, int cse, int ins,
 		    int p1, int p2);

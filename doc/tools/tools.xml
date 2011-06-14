@@ -20,6 +20,7 @@
 		<xi:include href="pkcs15-tool.xml"/>
 		<xi:include href="pkcs15-init.xml"/>
 		<xi:include href="westcos-tool.xml"/>
+		<xi:include href="dnie-tool.xml"/>
 
 		<xi:include href="pkcs15-profile.xml"/>
 	</reference>

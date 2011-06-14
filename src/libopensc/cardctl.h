@@ -208,6 +208,13 @@ enum {
 	SC_CARDCTL_PIV_OBJECT_PRESENT,
 
         /*
+	 * DNIe specific calls
+	 */
+	SC_CARDCTL_DNIE_BASE = _CTL_PREFIX('D', 'N', 'I'),
+	SC_CARDCTL_DNIE_GENERATE_KEY,
+	SC_CARDCTL_DNIE_GET_INFO,
+
+        /*
 	 * AuthentIC v3
 	 */
         SC_CARDCTL_AUTHENTIC_BASE = _CTL_PREFIX('A','V','3'),

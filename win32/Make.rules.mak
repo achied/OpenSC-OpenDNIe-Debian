@@ -25,7 +25,7 @@ OPENSSL_DIR = C:\OpenSSL-Win32
 OPENSSL_INCL_DIR = /I$(OPENSSL_DIR)\include
 OPENSSL_LIB = $(OPENSSL_DIR)\lib\VC\static\libeay32MT.lib $(OPENSSL_DIR)\lib\VC\static\ssleay32MT.lib user32.lib advapi32.lib crypt32.lib
 
-PROGRAMS_OPENSSL = pkcs15-init.exe cryptoflex-tool.exe netkey-tool.exe piv-tool.exe westcos-tool.exe
+PROGRAMS_OPENSSL = pkcs15-init.exe cryptoflex-tool.exe netkey-tool.exe piv-tool.exe westcos-tool.exe dnie-tool.exe
 OPENSC_FEATURES = $(OPENSC_FEATURES) openssl
 !ENDIF
 
