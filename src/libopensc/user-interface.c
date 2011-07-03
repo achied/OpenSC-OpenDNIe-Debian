@@ -203,10 +203,10 @@ int ask_user_consent(sc_card_t * card, const char *title, const char *message)
 		fflush(stdin);
 		for (n = 0; n<4; n++) {
 			char *pt;
+			memset(outbuf, 0, sizeof(outbuf));
 			if (n==0) snprintf(outbuf,1023,"%s %s\n",user_consent_msgs[0],title);
 			else if (n==1) snprintf(outbuf,1023,"%s %s\n",user_consent_msgs[1],message);
-			else snprintf(outbuf,1023,"%s\n");
-			outbuf[1023]='\0';
+			else snprintf(outbuf,1023,"%s\n",user_consent_msgs[n]);
 			/* send message */
 			fputs(outbuf, fout);
 			fflush(fout);

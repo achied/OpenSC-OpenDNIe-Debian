@@ -149,7 +149,7 @@ static struct sc_atr_table dnie_atrs[] = {
 const char *user_consent_title="Signature Requested";
 
 #ifdef linux
-const char *user_consent_message="SETDESC Está a punto de realizar una firma electrónica con su clave de FIRMA del DNI electrónico. ¿Desea permitir esta operación?\n";
+const char *user_consent_message="Está a punto de realizar una firma electrónica con su clave de FIRMA del DNI electrónico. ¿Desea permitir esta operación?";
 #else
 const char *user_consent_message="Esta a punto de realizar una firma digital\ncon su clave de FIRMA del DNI electronico.\nDesea permitir esta operacion?";
 #endif
