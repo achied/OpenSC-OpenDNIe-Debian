@@ -136,7 +136,7 @@ void util_print_binary(FILE *f, const u8 *buf, int count)
 	(void) fflush(f);
 }
 
-void util_hex_dump(FILE *f, const u8 *in, int len, const char *sep)
+void util_hex_dump(FILE *f, const u8 *in, size_t len, const char *sep)
 {
 	int i;
 

@@ -73,37 +73,37 @@ static int ui_ask_user_consent(
         const char *msg         /* Text to be shown to the user */
 	) {
 
-	CFOptionFlags result;  // result code from the message box
-	CFStringRef header_ref; // to store title
-	CFStringRef message_ref; // to store message
+	CFOptionFlags result;  /* result code from the message box */
+	CFStringRef header_ref; /* to store title */
+	CFStringRef message_ref; /* to store message */
 
-	// convert the strings from char* to CFStringRef
+	/* convert the strings from char* to CFStringRef */
 	header_ref = CFStringCreateWithCString(NULL,title,strlen(title));
 	message_ref = CFStringCreateWithCString(NULL,message,strlen(message));
 	
 	/* stupid trick to avoid "unused" warning */
 	sc_log(ctx,"Notice: Windows ignores '%s' User Consent app",user_consent_app);
 
-	// Displlay user notification alert
+	/* Displlay user notification alert */
 	CFUserNotificationDisplayAlert(
-		0, // no timeout
-		kCFUserNotificationNoteAlertLevel,  // Alert level
-		NULL,	// IconURL, use default, you can change
-			// it depending message_type flags
-		NULL,	// SoundURL (not used)
-		NULL,	//localization of strings
-		header_ref,	// header. Cannot be null
-		message_ref,	//message text
-		CFSTR("Cancel"), // default ( "OK" if null) button text
-		CFSTR("OK"), // second button title
-                NULL, // third button title, null--> no other button
-		&result //response flags
+		0, /* no timeout */
+		kCFUserNotificationNoteAlertLevel,  /* Alert level */
+		NULL,	/* IconURL, use default, you can change */
+			/* it depending message_type flags */
+		NULL,	/* SoundURL (not used) */
+		NULL,	/*localization of strings */
+		header_ref,	/* header. Cannot be null */
+		message_ref,	/*message text */
+		CFSTR("Cancel"), /* default ( "OK" if null) button text */
+		CFSTR("OK"), /* second button title */
+                NULL, /* third button title, null--> no other button */
+		&result /*response flags */
 	);
 
-	//Clean up the strings
+	/* Clean up the strings */
 	CFRelease( header_ref );
         CFRelease( message_ref );
-	// Return 0 only if "OK" is selected
+	/* Return 0 only if "OK" is selected */
 	if( result == kCFUserNotificationAlternateResponse ) return SC_SUCCESS;
 	return SC_ERROR_NOT_ALLOWED;
 }
@@ -147,7 +147,8 @@ static int ui_ask_user_consent(
 
 	pid_t pid;
 	char *msg;		/* to store error messages */
-	FILE *fin, *fout;	/* to handle pipes as streams */
+	FILE *fin=NULL;
+	FILE *fout=NULL;	/* to handle pipes as streams */
 	struct stat st_file;	/* to verify that executable exists */
 	int srv_send[2];	/* to send data from server to client */
 	int srv_recv[2];	/* to receive data from client to server */
@@ -341,7 +342,6 @@ int sc_ask_user_consent(sc_card_t * card, const char *title, const char *message
 {
 	sc_card_ui_context_t *ui_context;
 	int res = SC_ERROR_INTERNAL;	/* by default error :-( */
-	char *msg = NULL;	/* to makr errors */
 
 	if ((card == NULL) || (card->ctx == NULL))
 		return SC_ERROR_INVALID_ARGUMENTS;
