@@ -73,8 +73,8 @@
             <!-- Tools have their own folder -->
             <Directory Id="INSTALLDIR_TOOLS" Name="tools">
               <Component Id="opensc.dll" Guid="*" Win64="$(var.Win64YesNo)">
-          	<File Source="$(var.SOURCE_DIR)\src\libopensc\opensc.dll" Vital="yes"/>
-       	      </Component>
+                <File Source="$(var.SOURCE_DIR)\src\libopensc\opensc.dll" Vital="yes"/>
+              </Component>
               <Component Id="opensc_explorer.exe" Guid="*" Win64="$(var.Win64YesNo)">
                 <File Source="$(var.SOURCE_DIR)\src\tools\opensc-explorer.exe" Vital="yes"/>
               </Component>
