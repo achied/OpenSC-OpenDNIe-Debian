@@ -1,8 +1,21 @@
+opensc (0.12.2-OpenDNIe) UNRELEASED; urgency=low
+
+  * Non-maintainer upload.
+  * Change upstream to OpenSC-OpenDNIe
+    - http://github.com/jonsito/OpenSC/
+    - http://forja.cenatic.es/projects/opendnie
+  * Raise release version number to -OpenDNIe
+  * Add support for autoreconf
+  * debian/opensc.install: Convert to multi-arch triplets
+  * Add patch to fix directory creation in build system
+
+ -- Carlos Alberto Lopez Perez <clopez@igalia.com>  Tue, 08 Jan 2013 00:36:54 +0100
+
 opensc (0.12.2-3) unstable; urgency=low
 
   * debian/compat, debian/control: Upgrade to dh v9. (Closes: #656350)
 
- --
+ -- Eric Dorland <eric@debian.org>  Sun, 11 Sep 2011 19:53:24 -0400
 
 opensc (0.12.2-2) unstable; urgency=low
 
